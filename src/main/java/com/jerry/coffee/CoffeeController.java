@@ -16,4 +16,17 @@ import java.net.URI;
 @RequestMapping("/v12/coffees")
 @AllArgsConstructor
 public class CoffeeController {
+    private final static String COFFEE_DEFAULT_URL = "/v12/coffees";
+    private final CoffeeService coffeeService;
+    private final CoffeeMapper mapper;
+
+    @PostMapping
+    public Mono<ResponseEntity> postCoffee(@RequestBody Mono<CoffeeDto.Post> requestBody) {
+        return requestBody
+                .flatMap(post -> coffeeService.createCoffee(mapper.coffeePostDtoToCoffee(post)))
+                .map(createCoffee -> {
+                    URI location = UriCreator.createUri(COFFEE_DEFAULT_URL, createCoffee.getCoffeeId());
+                    return ResponseEntity.created(location).build();
+                });
+    }
 }

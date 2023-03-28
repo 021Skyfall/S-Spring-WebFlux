@@ -11,4 +11,9 @@ import reactor.core.publisher.Mono;
 @Transactional
 @AllArgsConstructor
 public class CoffeeService {
+    private final CoffeeRepository coffeeRepository;
+
+    public Mono<Coffee> createCoffee(Coffee coffee) {
+        return coffeeRepository.save(coffee);
+    }
 }

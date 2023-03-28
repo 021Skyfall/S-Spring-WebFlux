@@ -9,7 +9,6 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
 @EnableR2dbcAuditing
 @SpringBootApplication
 public class WebFluxApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(WebFluxApplication.class, args);
 	}
