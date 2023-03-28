@@ -25,8 +25,7 @@ CREATE TABLE IF NOT EXISTS COFFEE (
     ENG_NAME varchar(100) NOT NULL,
     PRICE number NOT NULL,
     COFFEE_CODE char(3) NOT NULL,
-    CREATED_AT datetime NOT NULL,
-    LAST_MODIFIED_AT datetime NOT NULL,
+    COFFEE_STATUS varchar(100) not null,
     PRIMARY KEY (COFFEE_ID)
 );
 
